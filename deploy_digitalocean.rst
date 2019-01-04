@@ -111,9 +111,9 @@ Creamos el script de arranque y lo hacemos ejecutable:
 .. code-block:: sh
 	(dreamjob)$ vim ~/bin/gunicorn_start
 
+Contenido del archivo
 .. code-block:: bash
 	#!/bin/bash
-	 
 	NAME="dreamjob_app" # Name of the application
 	DJANGODIR=/home/webapps/projects/dreamjobbackend/ # Django project directory
 	SOCKFILE=/home/webapps/projects/dreamjobbackend/run/gunicorn.sock # we will communicte using this unix socket
