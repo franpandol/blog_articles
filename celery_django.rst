@@ -91,14 +91,12 @@ Dentro del archivo tasks.py de nuestra app dreambjobs creamos una task que llame
 
 ``vim your_project/dreamjobs/task.py``
 
-```python3
+::
+	
 	from celery.decorators import task
 	from celery.task.schedules import crontab
 	from celery.utils.log import get_task_logger
 	from celery.decorators import periodic_task
-```
-
-::
 
 	from dreamjobs.utils import update_jobs
 
