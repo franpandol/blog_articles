@@ -36,6 +36,7 @@ Creamos un archivo celery.py que instancie la app
 ``vim your_project/your_project/celery.py``
 
 ::
+
 	from __future__ import absolute_import, unicode_literals
 	import os
 	from celery import Celery
@@ -60,6 +61,7 @@ Para asegurarnos que la app es cargada cuando inicie Django, la importamos en el
 ``vim your_project/your_project/__init__.py``
 
 ::
+
 	from __future__ import absolute_import, unicode_literals
 
 	# This will make sure the app is always imported when
@@ -135,6 +137,7 @@ Creamos el archivo que va a ejecutar el worker /home/user/bin/start_celery y le 
 Creamos un archivo de configuración para que supervisor lo gestione en /etc/supervisor/conf.d/celery.conf
 
 ::
+
 	[program:celery_worker]
 	command=/home/webapps/bin/celery_start
 	stdout_logfile=/home/webapps/logs/celery_worker.log
@@ -145,6 +148,7 @@ Creamos un archivo de configuración para que supervisor lo gestione en /etc/sup
 Creamos el archivo de log y ejecutamos los comandos para que supervisor lea el archivo celery.conf
 
 ::
+
 	touch /home/webapps/logs/celery_worker.log
 	sudo supervisorctl reread
 	sudo supervisorctl update
