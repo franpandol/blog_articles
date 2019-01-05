@@ -44,7 +44,7 @@ Creamos un archivo celery.py que instancie la app
 	# set the default Django settings module for the 'celery' program.
 	os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'your_project.settings')
 
-	app = Celery('proj')
+	app = Celery('your_project')
 
 	# Using a string here means the worker doesn't have to serialize
 	# the configuration object to child processes.
@@ -91,12 +91,14 @@ Dentro del archivo tasks.py de nuestra app dreambjobs creamos una task que llame
 
 ``vim your_project/dreamjobs/task.py``
 
-::
-	
+```python
 	from celery.decorators import task
 	from celery.task.schedules import crontab
 	from celery.utils.log import get_task_logger
 	from celery.decorators import periodic_task
+```
+
+::
 
 	from dreamjobs.utils import update_jobs
 
@@ -111,20 +113,18 @@ Dentro del archivo tasks.py de nuestra app dreambjobs creamos una task que llame
 
 	@periodic_task(
 		run_every=(crontab(minute='*/120')),
-		name="async_update_jobs",
+		name="periodic_update_jobs",
 		ignore_result=True
 	)
 	def periodic_update_jobs(email, message):
-		logger.info("async_update_jobs")
+		logger.info("periodic_update_jobs")
 		update_jobs()
 
+#TODO Explicar django-celery-beat
 
 Despliegue en servidor linux
 ---------------------------------------------
 Creamos el archivo que va a ejecutar el worker /home/user/bin/start_celery y le damos permisos de ejecución
-
-``vim /home/user/bin/start_celery``
-``sudo chmod +x /home/user/bin/start_celery``
 
 ::
 
