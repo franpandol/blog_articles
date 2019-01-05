@@ -22,8 +22,6 @@ Integración en Django
 Agregamos valores de settings para celery en settings.py
 
 .. highlight:: python
-
-::
 	CELERY_BROKER_URL = 'redis://localhost:6379/0'
 	CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 	CELERY_ACCEPT_CONTENT = ['application/json']
