@@ -242,8 +242,7 @@ Creamos un enlace simbólico:
 
 ::
 
-	(dreamjob)$ sudo ln -s /etc/nginx/sites-available/ /etc/nginx/sites-
-enabled/
+	(dreamjob)$ sudo ln -s /etc/nginx/sites-available/ /etc/nginx/sites-enabled/
 
 Creamos los archivos de log para nginx:
 
