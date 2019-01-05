@@ -33,6 +33,8 @@ Creamos un archivo celery.py que instancie la app
 
 your_project/your_project/celery.py
 
+::
+
 	from __future__ import absolute_import, unicode_literals
 	import os
 	from celery import Celery
