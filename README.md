@@ -1,1 +1,1 @@
-# Textos, artículos y guías que fui armando. Ahora escrito en ReStructuredText
+Artículos y apuntes escritos por mi sobre Djangorevisados, actualizados y en reST.
