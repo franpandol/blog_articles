@@ -6,13 +6,13 @@ Instalación
 ---------------------------------------------
 
 Instalamos redis
-	$ sudo aptitude install redis-server
+	`$ sudo aptitude install redis-server``
 
 Chequeamos que esté corriendo 
-	$ redis-cli ping
+	``$ redis-cli ping``
 
 Instalamos celery con redis como broker
-	pip install -U "celery[redis]"
+	``pip install -U "celery[redis]"``
 
 
 
