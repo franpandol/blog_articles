@@ -34,7 +34,6 @@ Creamos un archivo celery.py que instancie la app
 your_project/your_project/celery.py
 
 ::
-
 	from __future__ import absolute_import, unicode_literals
 	import os
 	from celery import Celery
@@ -73,11 +72,11 @@ Con la linea:
 Celery puede descubrir automáticamente todas las tareas que esten en los archivos tasks.py de todas las apps en INSTALLED_APPS
 
 - app1/
-    - tasks.py
-    - models.py
+	- tasks.py
+	- models.py
 - app2/
-    - tasks.py
-    - models.py
+	- tasks.py
+	- models.py
 
  
 Veamos un ejemplo práctico
@@ -97,18 +96,18 @@ Dentro del archivo tasks.py de nuestra app dreambjobs creamos una task que llame
 
 	@task(name="async_update_jobs")
 	def async_update_jobs(email, message):
-	    logger.info("async_update_jobs")
-	    update_jobs()
+		logger.info("async_update_jobs")
+		update_jobs()
 
 
 	@periodic_task(
-	    run_every=(crontab(minute='*/120')),
-	    name="async_update_jobs",
-	    ignore_result=True
+		run_every=(crontab(minute='*/120')),
+		name="async_update_jobs",
+		ignore_result=True
 	)
 	def periodic_update_jobs(email, message):
-	    logger.info("async_update_jobs")
-	    update_jobs()
+		logger.info("async_update_jobs")
+		update_jobs()
 
 
 Despliegue en servidor linux
