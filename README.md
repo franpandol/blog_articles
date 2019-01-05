@@ -1,1 +1,1 @@
-Artículos y apuntes escritos por mi sobre Django en producción revisados, actualizados y en reST.
+Artículos y apuntes escritos por mi sobre Djangorevisados, actualizados y en reST.
