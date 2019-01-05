@@ -21,6 +21,8 @@ Integración en Django
 
 Agregamos valores de settings para celery en settings.py
 
+``vim your_project/your_project/settings/settings_production.py``
+
 ::
 	
 	CELERY_BROKER_URL = 'redis://localhost:6379/0'
@@ -31,7 +33,7 @@ Agregamos valores de settings para celery en settings.py
 
 Creamos un archivo celery.py que instancie la app
 
-your_project/your_project/celery.py
+``vim your_project/your_project/celery.py``
 
 ::
 	from __future__ import absolute_import, unicode_literals
@@ -55,8 +57,9 @@ your_project/your_project/celery.py
 
 Para asegurarnos que la app es cargada cuando inicie Django, la importamos en el archivo __init__.py
 
-your_project/your_project/__init__.py:
+``vim your_project/your_project/__init__.py``
 
+::
 	from __future__ import absolute_import, unicode_literals
 
 	# This will make sure the app is always imported when
@@ -84,6 +87,10 @@ Veamos un ejemplo práctico
 
 Dentro del archivo tasks.py de nuestra app dreambjobs creamos una task que llame al método update_jobs.
 
+``vim your_project/dreamjobs/task.py``
+
+::
+	
 	from celery.decorators import task
 	from celery.task.schedules import crontab
 	from celery.utils.log import get_task_logger
@@ -113,6 +120,12 @@ Dentro del archivo tasks.py de nuestra app dreambjobs creamos una task que llame
 Despliegue en servidor linux
 ---------------------------------------------
 Creamos el archivo que va a ejecutar el worker /home/user/bin/start_celery y le damos permisos de ejecución
+
+``vim /home/user/bin/start_celery``
+``sudo chmod +x /home/user/bin/start_celery``
+
+::
+
 	#!/bin/bash
 
 	source /home/webapps/.virtualenvs/your_project/bin/activate
@@ -120,6 +133,8 @@ Creamos el archivo que va a ejecutar el worker /home/user/bin/start_celery y le 
 	exec celery --app=your_project.celery:app worker --loglevel=DEBUG
 
 Creamos un archivo de configuración para que supervisor lo gestione en /etc/supervisor/conf.d/celery.conf
+
+::
 	[program:celery_worker]
 	command=/home/webapps/bin/celery_start
 	stdout_logfile=/home/webapps/logs/celery_worker.log
@@ -128,6 +143,8 @@ Creamos un archivo de configuración para que supervisor lo gestione en /etc/sup
 	autorestart=true
 
 Creamos el archivo de log y ejecutamos los comandos para que supervisor lea el archivo celery.conf
+
+::
 	touch /home/webapps/logs/celery_worker.log
 	sudo supervisorctl reread
 	sudo supervisorctl update
