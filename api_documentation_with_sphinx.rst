@@ -18,7 +18,7 @@ Ejecutamos el wizard de sphinx
 
 	``$ sphinx-quickstart``
 
-Respondemos las preguntas y se van a crear los archivos. Abrimos el que se llama conf.py y agregamos el siguiente código
+Respondemos las preguntas y se van a crear los archivos básicos. Abrimos el que se llama conf.py y agregamos el siguiente código
 
 ::
 
@@ -76,8 +76,9 @@ Agregamos docs.urls a urls.py:
 	    ...
 	    url(r'^docs/', include('docs.urls')),
 	    ...
-]
+	]
 
 Editamos la configuración:
+
 	DOCS_ROOT = os.path.join(PROJECT_PATH, '../docs/_build/html')
 	DOCS_ACCESS = 'staff'
