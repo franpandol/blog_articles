@@ -1,5 +1,5 @@
 ==============================================================================================================
-Cómo hacer un despliegue de Django 2.1 en DigitalOcean usando nginx, gunicorn y supervisor
+Cómo hacer un despliegue de Django 2.1 en DigitalOcean usando nginx, gunicorn y supervisor. Paso a paso.
 ==============================================================================================================
 
 Crear un droplet en DigitalOcean
