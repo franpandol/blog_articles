@@ -48,3 +48,36 @@ Creamos los archivos de nuestra documentación agregando en el index las seccion
 
 
 Para ver un ejemplo completo de documentación revisar la del repositorio dreamjobs.
+`DreamJob Docs <https://github.com/franpandol/dreamjob/tree/master/docs>`_.
+
+Para compilar nuestrors archivos vamos al directorio docs/ y ejecutamos.
+
+`make html`
+
+Para terminar vamos a servir la documentación utilizando nuestro servidor Django, para ello vamos a utilizar una app llamada `django-docs <https://github.com/littlepea/django-docs>`_.
+
+Pasos para utilizar django-docs
+
+Instalación
+
+	pip install django-docs
+
+Agregamos docs a INSTALLED_APPS en settings.py:
+
+	INSTALLED_APPS = (
+	    ...
+	    'docs',
+	    ...
+	)
+
+Agregamos docs.urls a urls.py:
+
+	urlpatterns = [
+	    ...
+	    url(r'^docs/', include('docs.urls')),
+	    ...
+]
+
+Editamos la configuración:
+	DOCS_ROOT = os.path.join(PROJECT_PATH, '../docs/_build/html')
+	DOCS_ACCESS = 'staff'
